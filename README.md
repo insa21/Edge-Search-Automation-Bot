@@ -944,9 +944,7 @@ Aplikasi ini **tidak** menyediakan mekanisme untuk melewati CAPTCHA, rate limit,
 
 ## 📜 Lisensi
 
-Berdasarkan `package.json`, project ini menggunakan lisensi **MIT**.
-
-> Tambahkan file `LICENSE` ke root repository sebelum mendistribusikan aplikasi secara publik agar lisensi terdokumentasi secara formal.
+Proyek ini dilisensikan di bawah [MIT License](LICENSE). Silakan baca file LICENSE untuk informasi lebih lanjut mengenai hak penggunaan dan distribusi.
 
 ---
 
