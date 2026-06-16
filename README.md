@@ -2,7 +2,7 @@
 
 # 🤖 Edge Search Automation Bot
 
-**Otomatiskan pencarian Microsoft Edge dari satu file TXT melalui dashboard desktop yang modern, aman, dan mudah digunakan.**
+**Automate Microsoft Edge searches from a single TXT file through a modern, secure, and easy-to-use desktop dashboard.**
 
 ---
 
@@ -19,76 +19,81 @@
 
 ---
 
+**English 🇬🇧** | [Bahasa Indonesia 🇮🇩](README.id.md)
+
+---
+
 </div>
 
-## 📋 Daftar Isi
+## 📋 Table of Contents
 
 - [Overview](#-overview)
-- [Preview Aplikasi](#-preview-aplikasi)
-- [Fitur Utama](#-fitur-utama)
-- [Cara Kerja](#-cara-kerja)
-- [Arsitektur Aplikasi](#-arsitektur-aplikasi)
+- [App Preview](#-app-preview)
+- [Key Features](#-key-features)
+- [How It Works](#-how-it-works)
+- [App Architecture](#-app-architecture)
 - [State Machine](#-state-machine)
-- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
-- [Format File TXT](#-format-file-txt)
-- [Persyaratan Sistem](#-persyaratan-sistem)
-- [Instalasi untuk Developer](#-instalasi-untuk-developer)
-- [Cara Menggunakan](#-cara-menggunakan)
-- [Menyimpan Akun Edge](#-menyimpan-akun-edge)
-- [Menjalankan Automation](#-menjalankan-automation)
-- [Konfigurasi](#-konfigurasi)
-- [Build Aplikasi Windows](#-build-aplikasi-windows)
-- [Struktur Folder](#-struktur-folder)
-- [Keamanan](#-keamanan)
+- [Technologies Used](#-technologies-used)
+- [TXT File Format](#-txt-file-format)
+- [System Requirements](#-system-requirements)
+- [Developer Installation](#-developer-installation)
+- [How to Use](#-how-to-use)
+- [Saving Edge Accounts](#-saving-edge-accounts)
+- [Running Automation](#-running-automation)
+- [Configuration](#-configuration)
+- [Building Windows App](#-building-windows-app)
+- [Folder Structure](#-folder-structure)
+- [Security](#-security)
 - [Error Handling](#-error-handling)
 - [Troubleshooting](#-troubleshooting)
 - [Activity Log](#-activity-log)
 - [Roadmap](#-roadmap)
 - [FAQ](#-faq)
-- [Kontribusi](#-kontribusi)
-- [Git Ignore](#-git-ignore-penting)
+- [Contribution](#-contribution)
+- [Important Git Ignore](#-important-git-ignore-important)
 - [Disclaimer](#️-disclaimer)
+- [License](#-license)
 
 ---
 
 ## 📌 Overview
 
-**Edge Search Automation Bot** adalah aplikasi desktop Windows yang membaca daftar keyword dari file TXT, membuka Microsoft Edge menggunakan profil automation yang menyimpan sesi login, lalu mengetik dan menjalankan pencarian satu per satu langsung melalui kotak pencarian pada halaman Bing — persis seperti yang dilakukan pengguna biasa.
+**Edge Search Automation Bot** is a Windows desktop application that reads a list of keywords from a TXT file, opens Microsoft Edge using a dedicated automation profile that preserves login sessions, and then types and performs searches one-by-one directly in the Bing search box — mimicking real user behavior.
 
-### Masalah yang Diselesaikan
+### Problem Solved
 
-Menjalankan puluhan atau ratusan pencarian secara manual di Bing adalah pekerjaan yang melelahkan dan membuang waktu. Menjalankan script terminal memerlukan pengetahuan teknis yang tidak dimiliki semua pengguna. Aplikasi ini menjembatani keduanya: automation yang andal dengan antarmuka yang mudah digunakan oleh siapa saja.
+Running dozens or hundreds of manual searches in Bing is tedious and time-consuming. Running terminal scripts requires technical knowledge that not all users possess. This application bridges both worlds: reliable browser automation with a simple, user-friendly desktop dashboard.
 
-### Target Pengguna
+### Target Audience
 
-- Pengguna yang ingin menjalankan daftar pencarian secara otomatis tanpa menulis kode
-- Developer yang membutuhkan alat automation pencarian dengan dashboard yang lengkap
-- Tim yang menggunakan akun Microsoft dan ingin mempertahankan sesi login
+- Users who want to automate a list of searches without writing code.
+- Developers who need a search automation tool with a full dashboard.
+- Teams using Microsoft accounts who want to maintain login sessions.
 
-### Keunggulan Dibanding Script Terminal
+### Advantages Over Terminal Scripts
 
-| Aspek          | Script Terminal    | Edge Search Automation Bot  |
-| -------------- | ------------------ | --------------------------- |
-| Antarmuka      | Teks               | Dashboard visual modern     |
-| Login akun     | Manual setiap sesi | Tersimpan otomatis          |
-| Progress       | Tidak terlihat     | Progress bar real-time      |
-| Kontrol        | Tidak ada          | Pause / Resume / Stop       |
-| Log            | File teks biasa    | Activity log berwarna       |
-| Error handling | Manual             | Retry otomatis + notifikasi |
-| CAPTCHA        | Gagal diam-diam    | Pause + notifikasi          |
-| Pengguna       | Hanya developer    | Semua kalangan              |
+| Aspect | Terminal Script | Edge Search Automation Bot |
+| --- | --- | --- |
+| **Interface** | Text-only | Modern visual dashboard |
+| **Account Login** | Manual every session | Saved automatically |
+| **Progress** | Not visible | Real-time progress bar |
+| **Control** | None | Pause / Resume / Stop |
+| **Logs** | Plain text files | Colorized real-time activity log |
+| **Error Handling** | Manual | Automatic retry + notification |
+| **CAPTCHA** | Fails silently | Pauses + displays notification |
+| **Users** | Developers only | Anyone |
 
-> Pencarian **tidak** dilakukan dengan membentuk URL seperti `https://www.bing.com/search?q=keyword`. Bot membuka halaman utama Bing dan mengetik keyword secara langsung di kotak pencarian.
+> Searches are **not** performed by building URLs like `https://www.bing.com/search?q=keyword`. The bot opens the Bing homepage and types the keyword directly into the search box.
 
 ---
 
-## 🖼️ Preview Aplikasi
+## 🖼️ App Preview
 
-### Dashboard Utama
+### Main Dashboard
 
-![Dashboard Edge Search Bot](docs/images/dashboard.png)
+![Edge Search Bot Dashboard](docs/images/dashboard.png)
 
-### Manajemen Keyword
+### Keyword Manager
 
 ![Keyword Manager](docs/images/keyword.png)
 
@@ -96,120 +101,120 @@ Menjalankan puluhan atau ratusan pencarian secara manual di Bing adalah pekerjaa
 
 ![Activity Log](docs/images/log.png)
 
-### Pengaturan
+### Settings
 
 ![Settings](docs/images/pengaturan.png)
 
-### Halaman Akun
+### Account Page
 
 ![Account](docs/images/akun.png)
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
-### Manajemen Keyword
+### Keyword Management
 
-- [x] Membaca keyword dari file `.txt` (satu baris = satu keyword)
-- [x] Preview dan pengelolaan keyword di tabel
-- [x] Tambah keyword secara manual
-- [x] Edit dan hapus keyword per baris
-- [x] Deteksi keyword duplikat dengan opsi pertahankan atau hapus
-- [x] Muat ulang dari file terakhir
+- [x] Read keywords from `.txt` files (one line = one keyword).
+- [x] Preview and manage keywords in a table.
+- [x] Add keywords manually.
+- [x] Edit and delete keywords per row.
+- [x] Duplicate detection with options to keep or delete.
+- [x] Reload from the last loaded file.
 
 ### Automation
 
-- [x] Membuka Microsoft Edge menggunakan profil automation khusus
-- [x] Login akun Microsoft hanya sekali — sesi tersimpan
-- [x] Automation langsung melalui kotak pencarian Bing
-- [x] Kecepatan mengetik yang dapat dikonfigurasi (Lambat / Normal / Cepat)
-- [x] Delay antar pencarian yang dapat diatur (minimum 3 detik)
-- [x] Retry otomatis per keyword jika terjadi kegagalan
-- [x] Fallback selector untuk menemukan kotak pencarian
+- [x] Open Microsoft Edge using a dedicated automation profile.
+- [x] Login to Microsoft accounts only once — session is saved.
+- [x] Automate directly through the Bing search input box.
+- [x] Configurable typing speeds (Slow / Normal / Fast).
+- [x] Configurable search delays (minimum 3 seconds).
+- [x] Automatic retry per keyword on failure.
+- [x] Fallback selector strategy for finding the search input.
 
-### Kontrol & Monitoring
+### Monitoring & Controls
 
-- [x] Tombol Mulai / Jeda / Lanjutkan / Hentikan
-- [x] Progress bar animasi real-time
-- [x] Tampilan keyword yang sedang diproses
-- [x] Statistik: Berhasil, Gagal, Waktu Berjalan, ETA
-- [x] Activity log berwarna real-time (INFO / SUCCESS / WARNING / ERROR)
-- [x] Penanganan CAPTCHA: automation dijeda, notifikasi ditampilkan
+- [x] Start / Pause / Resume / Stop control buttons.
+- [x] Animated real-time progress bar.
+- [x] Active keyword display.
+- [x] Statistics: Successes, Failures, Elapsed Time, ETA.
+- [x] Real-time colorized activity log (INFO / SUCCESS / WARNING / ERROR).
+- [x] CAPTCHA handling: Pauses automation and notifies user.
 
-### Pengaturan & Persistensi
+### Settings & Persistence
 
-- [x] Pengaturan disimpan secara otomatis ke disk
-- [x] Pemulihan dari posisi keyword terakhir
-- [x] Mode tema Gelap dan Terang
-- [x] Export log ke file `.txt`
-- [x] Deteksi browser ditutup secara manual
+- [x] Auto-saved settings to disk.
+- [x] Recovery from the last processed keyword position.
+- [x] Light and Dark theme modes.
+- [x] Export logs to `.txt` files.
+- [x] Detection of manual browser closures.
 
-### Build & Distribusi
+### Build & Distribution
 
-- [x] Build installer Windows (NSIS)
-- [x] Build versi Portable `.exe`
+- [x] Build Windows installers (NSIS).
+- [x] Build Portable `.exe` versions.
 
-### Fitur yang Direncanakan (Roadmap)
+### Planned Features (Roadmap)
 
-- [ ] Import dari CSV dan Excel
-- [ ] Beberapa profil akun
-- [ ] Penjadwalan automation
-- [ ] Notifikasi desktop
-- [ ] Mode system tray
-- [ ] Auto update
+- [ ] Import from CSV and Excel.
+- [ ] Support for multiple account profiles.
+- [ ] Scheduled automation.
+- [ ] Desktop notifications.
+- [ ] System tray mode.
+- [ ] Auto updates.
 
 ---
 
-## ⚙️ Cara Kerja
+## ⚙️ How It Works
 
 ```mermaid
 flowchart TD
-    A[🖱️ Pengguna membuka aplikasi] --> B[📂 Pilih file TXT]
-    B --> C[🔍 Parser membaca & validasi keyword]
-    C --> D[✅ Preview keyword di tabel]
-    D --> E[▶️ Pengguna menekan Mulai Pencarian]
+    A[🖱️ User opens the app] --> B[📂 Select TXT file]
+    B --> C[🔍 Parser reads & validates keywords]
+    C --> D[✅ Preview keywords in table]
+    D --> E[▶️ User clicks Start Search]
     E --> F[⚡ Electron Main Process]
-    F --> G[🎭 Playwright membuka Microsoft Edge]
-    G --> H[🌐 Buka halaman utama Bing]
-    H --> I[🔎 Temukan kotak pencarian]
-    I --> J[🖱️ Klik kotak pencarian]
-    J --> K[⌨️ Ketik keyword seperti pengguna biasa]
-    K --> L[↵ Tekan Enter]
-    L --> M[⏳ Tunggu halaman hasil dimuat]
-    M --> N{🛡️ CAPTCHA terdeteksi?}
-    N -- Ya --> O[⏸️ Automation dijeda\nNotifikasi ditampilkan]
-    O --> P[👤 Pengguna selesaikan CAPTCHA]
-    P --> Q[▶️ Lanjutkan]
-    Q --> R[⏱️ Tunggu delay yang dikonfigurasi]
-    N -- Tidak --> R
-    R --> S{📋 Masih ada keyword?}
-    S -- Ya --> I
-    S -- Tidak --> T[🎉 Automation selesai]
+    F --> G[🎭 Playwright opens Microsoft Edge]
+    G --> H[🌐 Navigate to Bing homepage]
+    H --> I[🔎 Find search box]
+    I --> J[🖱️ Click search box]
+    J --> K[⌨️ Type keyword like a real user]
+    K --> L[↵ Press Enter]
+    L --> M[⏳ Wait for search results to load]
+    M --> N{🛡️ CAPTCHA detected?}
+    N -- Yes --> O[⏸️ Automation paused\nNotification shown]
+    O --> P[👤 User solves CAPTCHA]
+    P --> Q[▶️ Resume]
+    Q --> R[⏱️ Wait for configured delay]
+    N -- No --> R
+    R --> S{📋 Remaining keywords?}
+    S -- Yes --> I
+    S -- No --> T[🎉 Automation completed]
 ```
 
-### Penjelasan Alur
+### Flow Explanation
 
-1. **Buka aplikasi** — Dashboard ditampilkan dengan status _Siap_
-2. **Pilih file TXT** — Keyword dibaca, divalidasi, dan ditampilkan di tabel
-3. **Login akun** (hanya sekali) — Edge dibuka, pengguna login manual, sesi tersimpan
-4. **Mulai pencarian** — Bot menjalankan setiap keyword secara berurutan:
-   - Edge membuka `https://www.bing.com/`
-   - Bot menemukan kotak pencarian menggunakan beberapa selector fallback
-   - Bot mengklik, menghapus isi sebelumnya, lalu mengetik keyword baru
-   - Bot menekan Enter dan menunggu halaman hasil
-   - Bot menunggu delay yang dikonfigurasi sebelum keyword berikutnya
-5. **Monitoring** — Progress, log, dan status diperbarui secara real-time
+1. **Open app** — Dashboard is shown with a *Ready* status.
+2. **Select TXT file** — Keywords are read, validated, and loaded into the table.
+3. **Login account** (once) — Edge opens, user logs in manually, session is preserved.
+4. **Start search** — The bot executes each keyword sequentially:
+   - Edge opens `https://www.bing.com/`
+   - Bot locates the search input box using fallback selectors.
+   - Bot clicks, clears the previous text, and types the new keyword.
+   - Bot presses Enter and waits for the search results page.
+   - Bot waits for the user-configured delay before proceeding to the next keyword.
+5. **Monitoring** — Progress, logs, and statistics are updated in real-time.
 
 ---
 
-## 🏗️ Arsitektur Aplikasi
+## 🏗️ App Architecture
 
 ```mermaid
 graph TD
     UI["⚛️ React Renderer\n(Dashboard, Pages, Components)"]
     PRELOAD["🔒 Electron Preload\n(contextBridge API)"]
     MAIN["⚡ Electron Main Process\n(Node.js)"]
-    FILE["📂 Keyword File Service\n(Baca & Parse TXT)"]
+    FILE["📂 Keyword File Service\n(Read & Parse TXT)"]
     SETTINGS["⚙️ Settings Service\n(JSON Persistence)"]
     LOGGER["📋 Logging Service\n(Structured Logs + Broadcast)"]
     PERSIST["💾 Persistence Service\n(Session State)"]
@@ -234,505 +239,501 @@ graph TD
     AUTOMATION -->|"onKeywordUpdate broadcast"| PRELOAD
 ```
 
-### Tanggung Jawab Setiap Layer
+### Layer Responsibilities
 
-| Layer                       | Tanggung Jawab                                                             |
-| --------------------------- | -------------------------------------------------------------------------- |
-| **React Renderer**          | Dashboard UI, state management (Zustand), navigasi, animasi                |
-| **Electron Preload**        | Expose API terbatas melalui `contextBridge`, tidak ada akses Node langsung |
-| **Electron Main Process**   | Koordinasi semua layanan, handler IPC, lifecycle window                    |
-| **Keyword File Service**    | Baca file TXT, validasi encoding, deduplikasi, cleaning                    |
-| **Settings Service**        | Simpan dan muat pengaturan ke JSON di `userData`                           |
-| **Logging Service**         | Format log terstruktur, broadcast ke renderer, sanitasi pesan sensitif     |
-| **Persistence Service**     | Simpan dan pulihkan posisi keyword terakhir                                |
-| **Edge Automation Service** | Kontrol Playwright, state machine, retry logic, CAPTCHA detection          |
+| Layer | Responsibility |
+| --- | --- |
+| **React Renderer** | Dashboard UI, state management (Zustand), navigation, animations |
+| **Electron Preload** | Expose restricted API to the renderer via `contextBridge` |
+| **Electron Main Process** | Coordinates all backend services, sets up IPC handlers, manages window lifecycle |
+| **Keyword File Service** | Reads TXT files, validates encoding, handles deduplication and cleaning |
+| **Settings Service** | Loads and saves user preferences to a JSON file in `userData` |
+| **Logging Service** | Formats structured logs, broadcasts to renderer, sanitizes sensitive info |
+| **Persistence Service** | Saves and restores the last processed keyword position |
+| **Edge Automation Service** | Controls Playwright, manages the state machine, retry logic, CAPTCHA detection |
 
-> **Penting:** Playwright dan semua kode browser automation **hanya berjalan di Electron Main Process**. React Renderer tidak memiliki akses langsung ke Playwright, `fs`, atau `child_process`.
+> **Important:** Playwright and all browser automation code **only run in the Electron Main Process**. The React Renderer does not have direct access to Playwright, `fs`, or `child_process`.
 
 ---
 
 ## 🔄 State Machine
 
-Automation menggunakan state machine dengan 12 status:
+The automation service uses a state machine with 11 states:
 
 ```mermaid
 stateDiagram-v2
     [*] --> IDLE
-    IDLE --> READY : File keyword dimuat
-    READY --> LAUNCHING_BROWSER : Tombol Mulai ditekan
-    LAUNCHING_BROWSER --> RUNNING : Edge berhasil dibuka
-    RUNNING --> PAUSING : Tombol Jeda ditekan
-    PAUSING --> PAUSED : Keyword aktif selesai
-    PAUSED --> RUNNING : Tombol Lanjutkan ditekan
-    RUNNING --> WAITING_FOR_USER : CAPTCHA terdeteksi
-    WAITING_FOR_USER --> RUNNING : Pengguna konfirmasi selesai
-    RUNNING --> STOPPING : Tombol Hentikan ditekan
-    STOPPING --> STOPPED : Proses dihentikan dengan aman
-    RUNNING --> COMPLETED : Semua keyword selesai
-    RUNNING --> ERROR : Terjadi kesalahan kritis
+    IDLE --> READY : Keyword file loaded
+    READY --> LAUNCHING_BROWSER : Start button pressed
+    LAUNCHING_BROWSER --> RUNNING : Edge successfully opened
+    RUNNING --> PAUSING : Pause button pressed
+    PAUSING --> PAUSED : Active keyword finished
+    PAUSED --> RUNNING : Resume button pressed
+    RUNNING --> WAITING_FOR_USER : CAPTCHA detected
+    WAITING_FOR_USER --> RUNNING : User confirms completion
+    RUNNING --> STOPPING : Stop button pressed
+    STOPPING --> STOPPED : Process safely stopped
+    RUNNING --> COMPLETED : All keywords completed
+    RUNNING --> ERROR : Critical error occurred
     ERROR --> READY : Reset
     COMPLETED --> READY : Reset
     STOPPED --> READY : Reset
 ```
 
-| Status              | Keterangan                                            |
-| ------------------- | ----------------------------------------------------- |
-| `IDLE`              | Aplikasi baru dibuka, belum ada keyword               |
-| `READY`             | Keyword dimuat, siap memulai                          |
-| `LAUNCHING_BROWSER` | Edge sedang dibuka                                    |
-| `RUNNING`           | Automation berjalan aktif                             |
-| `PAUSING`           | Permintaan jeda diterima, menyelesaikan keyword aktif |
-| `PAUSED`            | Dijeda, menunggu perintah lanjut                      |
-| `WAITING_FOR_USER`  | CAPTCHA terdeteksi, menunggu aksi pengguna            |
-| `STOPPING`          | Permintaan henti diterima                             |
-| `STOPPED`           | Dihentikan dengan aman                                |
-| `COMPLETED`         | Semua keyword berhasil diproses                       |
-| `ERROR`             | Terjadi kesalahan kritis                              |
+| State | Description |
+| --- | --- |
+| `IDLE` | App is opened; no keywords loaded yet |
+| `READY` | Keywords loaded; ready to start |
+| `LAUNCHING_BROWSER` | Edge is currently being opened |
+| `RUNNING` | Automation is actively running |
+| `PAUSING` | Pause request received; finishing active keyword |
+| `PAUSED` | Paused; waiting for resume command |
+| `WAITING_FOR_USER` | CAPTCHA detected; waiting for manual user action |
+| `STOPPING` | Stop request received |
+| `STOPPED` | Safely stopped |
+| `COMPLETED` | All keywords processed successfully |
+| `ERROR` | A critical error has occurred |
 
 ---
 
-## 🧰 Teknologi yang Digunakan
+## 🧰 Technologies Used
 
-| Teknologi                     | Versi   | Fungsi                      | Alasan Digunakan                                                          |
-| ----------------------------- | ------- | --------------------------- | ------------------------------------------------------------------------- |
-| **Electron**                  | ^31     | Framework aplikasi desktop  | Menggabungkan UI web dengan akses Node.js penuh untuk automation          |
-| **React**                     | ^18.3   | Framework UI                | Membangun dashboard interaktif, modular, dan berbasis komponen            |
-| **TypeScript**                | ^5.5    | Type safety                 | Mengurangi runtime error dan meningkatkan maintainability                 |
-| **Vite**                      | ^5.4    | Build tool & dev server     | Startup cepat, HMR instan, dan build yang efisien                         |
-| **electron-vite**             | ^5.0    | Electron + Vite integration | Menangani build terpisah untuk main, preload, dan renderer                |
-| **Tailwind CSS**              | ^4.0    | Utility-first CSS           | Design system konsisten, design token, dan pemeliharaan yang mudah        |
-| **Playwright**                | ^1.47   | Browser automation          | Mengontrol Microsoft Edge, menemukan elemen, mengetik, dan mengelola sesi |
-| **Microsoft Edge**            | Latest  | Browser target              | Browser default Windows dengan sesi akun Microsoft yang dapat disimpan    |
-| **Framer Motion**             | ^11.3   | Animasi UI                  | Transisi halaman halus, progress bar animasi, dan micro-interaction       |
-| **Lucide React**              | ^0.435  | Icon library                | Icon modern, ringan, dan konsisten untuk seluruh antarmuka                |
-| **Zustand**                   | ^4.5    | State management            | State manager ringan untuk automation state, settings, dan log            |
-| **electron-builder**          | ^24.13  | Packaging                   | Mengemas aplikasi menjadi installer NSIS dan Portable EXE                 |
-| **ESLint**                    | ^8.57   | Linting                     | Memastikan kualitas dan konsistensi kode TypeScript dan React             |
-| **@electron-toolkit/preload** | ^3.0    | Preload helper              | Menyederhanakan setup contextBridge dan tipe IPC                          |
-| **Node.js**                   | Runtime | Runtime JS                  | Mengeksekusi Electron main process, file system, dan automation service   |
+| Technology | Version | Function | Why Used |
+| --- | --- | --- | --- |
+| **Electron** | ^31 | Desktop application framework | Combines web UI with full Node.js access for automation |
+| **React** | ^18.3 | UI Library | Builds an interactive, modular, and component-based dashboard |
+| **TypeScript** | ^5.5 | Type safety | Reduces runtime errors and increases maintainability |
+| **Vite** | ^5.4 | Build tool & dev server | Fast startup, instant HMR, and efficient builds |
+| **electron-vite** | ^5.0 | Electron + Vite integration | Handles separate bundling for main, preload, and renderer processes |
+| **Tailwind CSS** | ^4.0 | Utility-first CSS | Consistent design system, design tokens, and easy styling |
+| **Playwright** | ^1.47 | Browser automation | Controls Microsoft Edge, finds elements, types, and manages sessions |
+| **Microsoft Edge** | Latest | Target browser | Windows default browser with saveable Microsoft account sessions |
+| **Framer Motion** | ^11.3 | UI Animations | Smooth page transitions, animated progress bars, and micro-interactions |
+| **Lucide React** | ^0.435 | Icon library | Modern, lightweight, and consistent icons across the interface |
+| **Zustand** | ^4.5 | State management | Lightweight state manager for automation state, settings, and logs |
+| **electron-builder** | ^24.13 | Packaging | Packages the application into NSIS installers and Portable EXEs |
+| **ESLint** | ^8.57 | Linting | Ensures quality and consistency of TypeScript and React code |
+| **@electron-toolkit/preload** | ^3.0 | Preload helper | Simplifies contextBridge setup and IPC typing |
+| **Node.js** | Runtime | JS Runtime | Runs the Electron main process, file system, and automation services |
 
-### Catatan Arsitektur Penting
+### Crucial Architectural Note
 
-**IPC Electron** digunakan sebagai jalur komunikasi aman antara React renderer dan Electron main process. Semua perintah automation dikirim melalui `ipcMain` dan `ipcRenderer`, bukan melalui akses langsung.
+**Electron IPC** is used as a secure communication channel between the React renderer and the Electron main process. All automation commands are sent via `ipcMain` and `ipcRenderer` instead of direct access.
 
-**contextBridge** mengekspos API terbatas dari preload ke renderer, memastikan renderer tidak memiliki akses ke modul Node.js seperti `fs` atau `child_process`.
+**contextBridge** exposes a restricted API from the preload script to the renderer, ensuring the renderer cannot access Node.js modules like `fs` or `child_process`.
 
-**Playwright** menjalankan Microsoft Edge menggunakan:
+**Playwright** runs Microsoft Edge using:
 
 ```ts
-channel: "msedge";
+channel: "msedge"
 ```
 
-dengan `launchPersistentContext` sehingga sesi login tersimpan di antara sesi automation.
+with `launchPersistentContext` so that login sessions are preserved between runs.
 
 ---
 
-## 📄 Format File TXT
+## 📄 TXT File Format
 
-### Contoh Format yang Benar
+### Correct Format Example
 
 ```txt
-kucing lucu
-anjing peliharaan
-teknologi AI terbaru
-otomatisasi bisnis dengan AI
-desain website modern
-cara belajar bahasa Inggris
-tips menjaga kesehatan
-tempat wisata populer Indonesia
+cute cats
+pet dogs
+latest AI technology
+business automation with AI
+modern website design
+how to learn English
+tips to stay healthy
+popular tourist places in Indonesia
 ```
 
-### Ketentuan File
+### File Constraints
 
-| Ketentuan        | Detail                                          |
-| ---------------- | ----------------------------------------------- |
-| Encoding         | UTF-8                                           |
-| Ekstensi         | `.txt`                                          |
-| Satu baris       | Satu keyword                                    |
-| Baris kosong     | Diabaikan secara otomatis                       |
-| Spasi awal/akhir | Dihapus otomatis (trim)                         |
-| Keyword berspasi | Dipertahankan (`desain website modern` ✓)       |
-| Duplikat         | Dapat dipertahankan atau dihapus melalui dialog |
-| File kosong      | Automation tidak dapat dimulai                  |
+| Constraint | Detail |
+| --- | --- |
+| **Encoding** | UTF-8 |
+| **Extension** | `.txt` |
+| **One Line** | One keyword |
+| **Empty Lines** | Skipped automatically |
+| **Leading/Trailing Whitespace** | Automatically trimmed |
+| **Spaces in Keywords** | Supported and typed as-is (`modern website design` ✓) |
+| **Duplicates** | Can be kept or removed via prompt |
+| **Empty Files** | Automation cannot be started |
 
-File contoh tersedia di [`sample/pencarian.txt`](sample/pencarian.txt).
-
----
-
-## 💻 Persyaratan Sistem
-
-| Komponen          | Persyaratan                                        |
-| ----------------- | -------------------------------------------------- |
-| Sistem Operasi    | Windows 10 (64-bit) atau Windows 11                |
-| Node.js           | Versi LTS (direkomendasikan v18 ke atas)           |
-| npm               | Versi yang kompatibel dengan Node.js               |
-| Microsoft Edge    | Versi stabil terbaru                               |
-| RAM               | Minimum 4 GB, direkomendasikan 8 GB                |
-| Koneksi Internet  | Diperlukan untuk menjalankan pencarian Bing        |
-| Ruang Penyimpanan | ~500 MB (termasuk node_modules dan profil browser) |
-
-> **Catatan:** Aplikasi saat ini hanya dikonfigurasi dan dikemas untuk **Windows x64**. Dukungan platform lain belum tersedia.
+A sample file is available at [`sample/pencarian.txt`](sample/pencarian.txt).
 
 ---
 
-## 🛠️ Instalasi untuk Developer
+## 💻 System Requirements
 
-### Clone dan Install
+| Component | Requirement |
+| --- | --- |
+| **Operating System** | Windows 10 (64-bit) or Windows 11 |
+| **Node.js** | LTS Version (v18 or above recommended) |
+| **npm** | Compatible version with Node.js |
+| **Microsoft Edge** | Latest stable version |
+| **RAM** | Minimum 4 GB, 8 GB recommended |
+| **Internet Connection** | Active connection required for Bing searches |
+| **Storage Space** | ~500 MB (including node_modules and browser profile) |
+
+> **Note:** The application is currently only configured and packaged for **Windows x64**. Support for other platforms is not yet available.
+
+---
+
+## 🛠️ Developer Installation
+
+### Clone and Install
 
 ```bash
-# 1. Clone repository
+# 1. Clone the repository
 git clone <repository-url>
 cd edge-search
 
-# 2. Install semua dependency
+# 2. Install all dependencies
 npm install
 ```
 
-### Menjalankan dalam Mode Development
+### Running in Development Mode
 
 ```bash
 npm run dev
 ```
 
-Electron akan otomatis terbuka dengan HMR aktif. Setiap perubahan kode langsung terefleksi tanpa restart.
+Electron will open automatically with Hot Module Replacement (HMR) enabled. Code changes will reflect instantly without restarting.
 
-### Perintah Lainnya
+### Other Commands
 
 ```bash
-# Periksa tipe TypeScript (renderer + main process)
+# Verify TypeScript types (renderer + main process)
 npm run typecheck
 
-# Linting kode
+# Lint code
 npm run lint
 
-# Linting dengan auto-fix
+# Lint with auto-fix
 npm run lint:fix
 
-# Preview build produksi
+# Preview production build
 npm run preview
 ```
 
 ---
 
-## 📖 Cara Menggunakan
+## 📖 How to Use
 
-### Langkah 1: Login Akun (Hanya Sekali)
+### Step 1: Account Login (Only Once)
 
-1. Jalankan aplikasi dengan `npm run dev`
-2. Klik menu **Akun** di sidebar kiri
-3. Klik tombol **"Login / Kelola Akun Edge"**
-4. Microsoft Edge akan terbuka dengan profil automation khusus
-5. Login ke akun Microsoft Anda secara manual seperti biasa
-6. Setelah login berhasil, **tutup Edge** — sesi tersimpan otomatis
-7. Status berubah menjadi **"Akun Tersimpan"** ✓
+1. Launch the application in dev mode with `npm run dev` (or run the installed app).
+2. Click on the **Account** tab in the left sidebar.
+3. Click the **"Login / Manage Edge Account"** button.
+4. Microsoft Edge will open using a dedicated automation profile.
+5. Manually log in to your Microsoft account.
+6. Once logged in, **close Microsoft Edge** — the session will save automatically.
+7. The status in the app will change to **"Account Saved"** ✓.
 
-> Anda tidak perlu login ulang selama profil automation tidak direset dan sesi masih valid.
+> You do not need to log in again unless you reset the automation profile or the session expires.
 
-### Langkah 2: Muat Keyword
+### Step 2: Load Keywords
 
-1. Klik menu **Keyword** di sidebar
-2. Klik **"Pilih File TXT"** dan pilih file keyword Anda
-3. Jika ada duplikat, pilih _Hapus Duplikat_ atau _Pertahankan Semua_
-4. Tabel keyword akan menampilkan semua keyword beserta statusnya
-5. Tambah, edit, atau hapus keyword sesuai kebutuhan
+1. Go to the **Keywords** tab in the sidebar.
+2. Click **"Choose TXT File"** and select your keyword file.
+3. If duplicates are found, select *Remove Duplicates* or *Keep All*.
+4. The keyword table will display all keywords with their status.
+5. Manually add, edit, or delete keywords as needed.
 
-### Langkah 3: Atur Pengaturan (Opsional)
+### Step 3: Configure Settings (Optional)
 
-1. Klik menu **Pengaturan**
-2. Atur delay antar pencarian (minimum 3 detik)
-3. Pilih kecepatan mengetik (Lambat / Normal / Cepat)
-4. Atur jumlah retry jika keyword gagal
-5. Klik **"Simpan Pengaturan"**
+1. Go to the **Settings** tab.
+2. Adjust search delay (minimum 3 seconds).
+3. Select typing speed (Slow / Normal / Fast).
+4. Set the maximum retry count for failed keywords.
+5. Click **"Save Settings"**.
 
-### Langkah 4: Mulai Pencarian
+### Step 4: Start Automation
 
-1. Klik menu **Dashboard**
-2. Klik tombol **"Mulai Pencarian"**
-3. Microsoft Edge akan terbuka dan mulai bekerja
-4. Pantau progress, keyword aktif, dan statistik secara real-time
+1. Return to the **Dashboard** tab.
+2. Click the **"Start Search"** button.
+3. Microsoft Edge will open and start performing searches automatically.
+4. Track progress, active keywords, and statistics in real-time.
 
-### Kontrol Selama Automation Berjalan
+### Control Options During Execution
 
-| Tombol        | Fungsi                                                             |
-| ------------- | ------------------------------------------------------------------ |
-| **Jeda**      | Selesaikan keyword aktif, lalu berhenti sebelum keyword berikutnya |
-| **Lanjutkan** | Lanjutkan dari keyword berikutnya                                  |
-| **Hentikan**  | Hentikan dengan aman dan simpan posisi terakhir                    |
+| Button | Function |
+| --- | --- |
+| **Pause** | Finish the active keyword, then stop before the next one |
+| **Resume** | Continue automation from the next keyword |
+| **Stop** | Stop automation safely and save the last position |
 
-### Langkah 5: Pantau Activity Log
+### Step 5: Monitor Activity Logs
 
-- Klik menu **Activity Log** untuk melihat log lengkap
-- Gunakan tombol **Salin Log** atau **Simpan ke TXT** untuk menyimpan log
+- Click the **Activity Log** tab to view complete logging.
+- Use **Copy Log** or **Save to TXT** to store the logs.
 
-> **Penting:** Aplikasi tidak meminta atau menyimpan password akun Microsoft. Login dilakukan langsung melalui jendela Microsoft Edge.
+> **Important:** The app never asks for or stores your Microsoft account password. Autentication occurs entirely within Microsoft Edge.
 
 ---
 
-## 🔑 Menyimpan Akun Edge
+## 🔑 Saving Edge Accounts
 
-Aplikasi menggunakan **Playwright Persistent Context** untuk menyimpan sesi login browser:
+The application uses **Playwright Persistent Context** to save browser login sessions:
 
-- Cookie dan sesi disimpan dalam **profil automation khusus** yang terpisah dari profil Edge utama Anda
-- Password tidak pernah ditulis ke source code atau file konfigurasi aplikasi
-- Profil disimpan menggunakan `app.getPath("userData")` — lokasi userData Electron yang aman
+- Cookies and sessions are stored in a **special automation profile** separate from your main Edge profile.
+- Passwords are never written to source code or configuration files.
+- The profile is stored using `app.getPath("userData")` — Electron's secure user data directory.
 
-**Lokasi profil (konseptual):**
+**Profile Location (Conceptual):**
 
 ```text
 %APPDATA%\edge-search-bot\edge-automation-profile\
 ```
 
-> Lokasi absolut dapat berbeda tergantung konfigurasi sistem operasi dan nama aplikasi.
+### Important Notes
 
-### Catatan Penting
-
-- Profil automation **tidak boleh digunakan** oleh dua proses automation secara bersamaan
-- Reset profil melalui menu Akun akan **menghapus sesi login** — Anda perlu login ulang
-- Folder `edge-automation-profile/` tidak boleh dicommit ke repository (sudah termasuk di `.gitignore`)
+- The automation profile **cannot be shared** by two automation processes concurrently.
+- Resetting the profile through the Account menu will **clear your login session** — you will need to log in again.
+- The `edge-automation-profile/` directory should never be committed to git (it is ignored in `.gitignore`).
 
 ---
 
-## 🤖 Menjalankan Automation
+## 🤖 Running Automation
 
-Setelah tombol **Mulai** ditekan, berikut yang terjadi di balik layar:
+Once the **Start** button is clicked, the following happens behind the scenes:
 
 ```ts
-// Ilustrasi — implementasi sebenarnya ada di electron/services/edgeAutomationService.ts
+// Illustration — actual implementation is in electron/services/edgeAutomationService.ts
 for (const keyword of keywords) {
-  // Buka halaman utama Bing (bukan URL pencarian)
+  // Navigate to Bing main page (not a direct search URL)
   await page.goto("https://www.bing.com/");
 
-  // Temukan kotak pencarian dengan beberapa fallback selector
+  // Locate search input box with fallback selectors
   const searchBox = await findSearchBox(page);
 
-  // Hapus isi sebelumnya dan ketik keyword baru
+  // Clear previous query and type new keyword
   await searchBox.click();
   await searchBox.press("Control+A");
   await searchBox.press("Backspace");
   await searchBox.pressSequentially(keyword, { delay: typingDelay });
   await searchBox.press("Enter");
 
-  // Tunggu halaman hasil selesai dimuat
+  // Wait for the search results page to load
   await waitForSearchResult(page);
 
-  // Tunggu delay yang dikonfigurasi pengguna
+  // Wait for the user-configured delay
   await sleep(configuredDelayMs);
 }
 ```
 
-> Kode di atas adalah ilustrasi alur kerja. Implementasi lengkap dengan retry logic, CAPTCHA detection, dan state machine berada di [`electron/services/edgeAutomationService.ts`](electron/services/edgeAutomationService.ts).
+> The code block above is a simplified workflow. The complete implementation containing retry logic, CAPTCHA detection, and state machine handles is in [`electron/services/edgeAutomationService.ts`](electron/services/edgeAutomationService.ts).
 
 ---
 
-## ⚙️ Konfigurasi
+## ⚙️ Configuration
 
-Semua pengaturan dapat diubah melalui menu **Pengaturan** dan disimpan secara otomatis.
+All settings can be changed in the **Settings** menu and are saved automatically.
 
-| Pengaturan           |       Default | Rentang             | Keterangan                                |
-| -------------------- | ------------: | ------------------- | ----------------------------------------- |
-| Delay pencarian      |       5 detik | 3–60 detik          | Jeda sebelum keyword berikutnya           |
-| Timeout halaman      |      30 detik | 10–120 detik        | Batas waktu menunggu halaman dimuat       |
-| Kecepatan mengetik   | Normal (60ms) | Lambat/Normal/Cepat | Delay setiap karakter yang diketik        |
-| Maksimal retry       |        2 kali | 0–5 kali            | Percobaan ulang jika keyword gagal        |
-| Setelah selesai      |    Tetap buka | —                   | Apakah Edge ditutup atau tetap terbuka    |
-| Lanjut dari terakhir |         Aktif | —                   | Lanjutkan dari keyword yang belum selesai |
-| Tema                 |         Gelap | Gelap/Terang        | Tema antarmuka dashboard                  |
+| Setting | Default | Range | Description |
+| --- | ---: | --- | --- |
+| **Search Delay** | 5 seconds | 3–60 seconds | Delay before moving to the next keyword |
+| **Page Timeout** | 30 seconds | 10–120 seconds | Time limit to wait for page load |
+| **Typing Speed** | Normal (60ms) | Slow/Normal/Fast | Character-by-character typing delay |
+| **Max Retries** | 2 times | 0–5 times | Retries before marking keyword as failed |
+| **Post-Completion** | Keep open | — | Whether to close Edge or keep it open |
+| **Resume Last Run** | Enabled | — | Resume from the last incomplete keyword |
+| **Theme** | Dark | Dark/Light | Dashboard theme mode |
 
 ---
 
-## 📦 Build Aplikasi Windows
+## 📦 Building Windows App
 
-### Build Installer dan Portable
+### Build Installer and Portable EXE
 
 ```bash
-# Build lengkap: typecheck + kompilasi + packaging Windows
+# Complete build: typechecks + compile + package for Windows
 npm run dist
 ```
 
-### Hasil Build
+### Build Output
 
 ```text
 dist/
-├── Edge Search Automation Bot Setup 1.0.0.exe   ← Installer NSIS
-└── Edge Search Automation Bot 1.0.0 Portable.exe ← Portable (tanpa instalasi)
+├── Edge Search Automation Bot Setup 1.0.0.exe   ← NSIS Installer
+└── Edge Search Automation Bot 1.0.0 Portable.exe ← Portable executable
 ```
 
-> **Catatan:** Nama file output ditentukan oleh konfigurasi `electron-builder.yml`. Verifikasi nama file di folder `dist/` setelah proses build selesai.
+### Pre-build Preparations
 
-### Persiapan Sebelum Build
+1. Prepare your icon file at `resources/icon.ico` (ICO format, min 256x256px).
+2. Ensure no Electron process is running.
+3. Run `npm run typecheck` beforehand to ensure zero TypeScript errors.
 
-1. Siapkan file icon di `resources/icon.ico` (format ICO, minimal 256×256px)
-2. Pastikan tidak ada proses Electron yang berjalan
-3. Jalankan `npm run typecheck` terlebih dahulu untuk memastikan tidak ada error TypeScript
-
-### Build Tanpa Packaging (Development)
+### Build Without Packaging (Development Testing)
 
 ```bash
-# Hanya kompilasi, tanpa membuat installer
+# Compiles files without packaging the installer
 npm run build
 ```
 
 ---
 
-## 📁 Struktur Folder
+## 📁 Folder Structure
 
 ```text
 edge-search/
 ├── electron/                          # Electron Main Process (Node.js)
 │   ├── main.ts                        # Entry point — window lifecycle, IPC setup
-│   ├── preload.ts                     # contextBridge API untuk renderer
+│   ├── preload.ts                     # contextBridge API for renderer
 │   ├── ipc/
-│   │   ├── automationHandlers.ts      # IPC: kontrol bot (start/pause/stop)
-│   │   ├── fileHandlers.ts            # IPC: baca file TXT, simpan log
-│   │   └── settingsHandlers.ts        # IPC: load/save pengaturan
+│   │   ├── automationHandlers.ts      # IPC: bot controls (start/pause/stop)
+│   │   ├── fileHandlers.ts            # IPC: read TXT files, save logs
+│   │   └── settingsHandlers.ts        # IPC: load/save settings
 │   └── services/
 │       ├── edgeAutomationService.ts   # Core Playwright automation engine
-│       ├── keywordFileService.ts      # Parse, validasi, deduplikasi keyword
-│       ├── loggerService.ts           # Structured logging dengan broadcast
-│       ├── settingsService.ts         # Persistensi pengaturan ke JSON
-│       └── persistenceService.ts      # Simpan/pulihkan posisi sesi
+│       ├── keywordFileService.ts      # Parse, validate, deduplicate keywords
+│       ├── loggerService.ts           # Structured logging with broadcast
+│       ├── settingsService.ts         # Settings persistence to JSON
+│       └── persistenceService.ts      # Session persistence
 │
 ├── src/                               # React Renderer Process
 │   ├── types/
 │   │   └── index.ts                   # Shared TypeScript interfaces
 │   ├── stores/
-│   │   ├── automationStore.ts         # State bot, keyword, timer
-│   │   ├── settingsStore.ts           # State dan persistensi pengaturan
-│   │   └── logStore.ts                # State log aktivitas
+│   │   ├── automationStore.ts         # Bot state, keywords, timer
+│   │   ├── settingsStore.ts           # Settings state and persistence
+│   │   └── logStore.ts                # Activity log state
 │   ├── components/
-│   │   ├── Sidebar.tsx                # Navigasi sidebar
-│   │   ├── TopBar.tsx                 # Header bar dengan status
-│   │   ├── StatusBadge.tsx            # Badge status berwarna
-│   │   ├── ProgressBar.tsx            # Progress bar animasi
-│   │   ├── ControlButtons.tsx         # Tombol Mulai/Jeda/Lanjut/Stop
-│   │   ├── CaptchaNotice.tsx          # Banner notifikasi CAPTCHA
-│   │   ├── ConfirmDialog.tsx          # Modal konfirmasi aksi berbahaya
-│   │   └── AddKeywordDialog.tsx       # Modal tambah/edit keyword
+│   │   ├── Sidebar.tsx                # Sidebar navigation
+│   │   ├── TopBar.tsx                 # Header bar with statuses
+│   │   ├── StatusBadge.tsx            # Colorized status badges
+│   │   ├── ProgressBar.tsx            # Animated progress bar
+│   │   ├── ControlButtons.tsx         # Start/Pause/Resume/Stop buttons
+│   │   ├── CaptchaNotice.tsx          # CAPTCHA detection banner
+│   │   ├── ConfirmDialog.tsx          # Dangerous action confirmation modal
+│   │   └── AddKeywordDialog.tsx       # Keyword add/edit modal
 │   ├── pages/
-│   │   ├── DashboardPage.tsx          # Halaman dashboard utama
-│   │   ├── KeywordsPage.tsx           # Manajemen keyword
-│   │   ├── ActivityLogPage.tsx        # Log aktivitas real-time
-│   │   ├── SettingsPage.tsx           # Pengaturan aplikasi
-│   │   └── AccountPage.tsx            # Manajemen akun Edge
-│   ├── electron.d.ts                  # Tipe global window.electronAPI
+│   │   ├── DashboardPage.tsx          # Main dashboard page
+│   │   ├── KeywordsPage.tsx           # Keyword manager table
+│   │   ├── ActivityLogPage.tsx        # Real-time activity log viewer
+│   │   ├── SettingsPage.tsx           # Application configurations
+│   │   └── AccountPage.tsx            # Edge account manager page
+│   ├── electron.d.ts                  # Global window.electronAPI types
 │   ├── App.tsx                        # Root component + routing
 │   ├── main.tsx                       # React entry point
 │   └── index.css                      # Design system + Tailwind CSS v4
 │
 ├── sample/
-│   └── pencarian.txt                  # Contoh file keyword
+│   └── pencarian.txt                  # Sample keywords file
 │
 ├── resources/
-│   └── icon.ico                       # Icon aplikasi (untuk build)
+│   └── icon.ico                       # App icon (for builds)
 │
 ├── scripts/
-│   └── create-icon.js                 # Helper pembuatan icon placeholder
+│   └── create-icon.js                 # Helper to create placeholder icon
 │
-├── electron.vite.config.ts            # Konfigurasi electron-vite
-├── vite.config.ts                     # Konfigurasi Vite (renderer)
-├── electron-builder.yml               # Konfigurasi packaging Windows
-├── tsconfig.json                      # TypeScript config (renderer)
-├── tsconfig.main.json                 # TypeScript config (main process)
-├── tsconfig.node.json                 # TypeScript config (Node tools)
-├── .eslintrc.cjs                      # Konfigurasi ESLint
-├── .gitignore
-├── package.json
-└── README.md
+├── electron.vite.config.ts            # electron-vite configuration
+│   ├── vite.config.ts                 # Vite configuration (renderer)
+│   ├── electron-builder.yml           # Windows packaging config
+│   ├── tsconfig.json                  # TS config (renderer)
+│   ├── tsconfig.main.json             # TS config (main process)
+│   ├── tsconfig.node.json             # TS config (Node tools)
+│   ├── .eslintrc.cjs                  # ESLint configuration
+│   ├── .gitignore
+│   ├── package.json
+│   └── README.md
 ```
 
 ---
 
-## 🔐 Keamanan
+## 🔐 Security
 
-Aplikasi ini dibangun dengan mengutamakan keamanan dan privasi pengguna.
+Security and user privacy are core tenets of this application.
 
-### Konfigurasi Electron
+### Electron Configuration
 
 ```ts
 webPreferences: {
-  contextIsolation: true,   // Renderer dan Node.js terisolasi
-  nodeIntegration: false,   // Renderer tidak punya akses Node langsung
-  sandbox: false,           // Diperlukan untuk IPC contextBridge
+  contextIsolation: true,   // Renderer and Node.js are isolated
+  nodeIntegration: false,   // Renderer does not have direct Node access
+  sandbox: false,           // Required for IPC contextBridge
   webSecurity: true,
 }
 ```
 
-### Prinsip Keamanan yang Diterapkan
+### Applied Security Principles
 
-- ✅ `contextIsolation: true` — renderer tidak bisa mengakses API Node.js secara langsung
-- ✅ `nodeIntegration: false` — tidak ada `require()` di renderer
-- ✅ API terbatas melalui `contextBridge` — hanya fungsi yang diperlukan yang diekspos
-- ✅ Semua browser automation berjalan di main process, bukan di renderer
-- ✅ Renderer tidak memiliki akses ke `fs`, `child_process`, atau `net`
-- ✅ Password tidak pernah diminta, disimpan, atau ditampilkan
-- ✅ Cookie tidak ditampilkan dalam log
-- ✅ Token dan data sesi tidak pernah diekspor
-- ✅ Semua data disimpan secara lokal di `userData`
-- ✅ Reset profil membutuhkan konfirmasi eksplisit pengguna
-- ✅ Tidak ada CAPTCHA bypass otomatis
-- ✅ Tidak ada proxy rotation atau fingerprint spoofing
-- ✅ Tidak ada stealth plugin untuk melewati sistem keamanan layanan
+- ✅ `contextIsolation: true` — Renderer cannot directly access Node.js API.
+- ✅ `nodeIntegration: false` — No `require()` in renderer.
+- ✅ Restricted API via `contextBridge` — Only required functions are exposed.
+- ✅ All browser automation runs in the main process, not the renderer.
+- ✅ Renderer has no access to `fs`, `child_process`, or `net`.
+- ✅ Passwords are never requested, stored, or displayed.
+- ✅ Cookies are not output to logs.
+- ✅ Session and access tokens are never exported.
+- ✅ All data is stored locally in `userData`.
+- ✅ Profile resets require explicit user confirmation.
+- ✅ No automatic CAPTCHA bypass mechanisms are implemented.
+- ✅ No proxy rotation or fingerprint spoofing.
+- ✅ No stealth plugins used to bypass third-party security.
 
-> Gunakan aplikasi ini secara bertanggung jawab dan pastikan penggunaannya mematuhi ketentuan layanan Microsoft, Bing, serta kebijakan organisasi Anda.
+> Use this application responsibly and ensure compliance with Microsoft's Terms of Service, Bing's Terms of Service, and your organization's policies.
 
 ---
 
 ## 🛡️ Error Handling
 
-| Kondisi                                     | Respons Aplikasi                                             |
-| ------------------------------------------- | ------------------------------------------------------------ |
-| Microsoft Edge tidak terinstal              | Pesan error dengan instruksi instalasi                       |
-| File TXT kosong atau tidak valid            | Automation tidak dapat dimulai                               |
-| Kotak pencarian tidak ditemukan             | Coba fallback selector, refresh halaman, lalu retry          |
-| Halaman Bing tidak termuat (timeout)        | Retry sesuai konfigurasi, tandai gagal jika habis            |
-| Koneksi internet terputus                   | Error ditampilkan, retry dilakukan                           |
-| Browser ditutup secara manual               | Automation dihentikan dengan aman, status diperbarui         |
-| Profil browser sedang digunakan proses lain | Pesan error bahwa profil terkunci                            |
-| CAPTCHA terdeteksi                          | Automation dijeda, notifikasi ditampilkan, menunggu pengguna |
-| Semua retry habis untuk satu keyword        | Keyword ditandai **Gagal**, automation lanjut ke berikutnya  |
+| Scenario | Application Action |
+| --- | --- |
+| **Microsoft Edge not installed** | Displays error message with installation instructions |
+| **TXT file empty or invalid** | Automation cannot be started |
+| **Search box not found** | Retries with fallback selectors, refreshes page |
+| **Bing page load timeout** | Retries according to settings, marks failed when exhausted |
+| **Internet connection lost** | Displays error, retries operation |
+| **Browser closed manually** | Automation safely stops, status updates in UI |
+| **Browser profile locked** | Displays error that profile is already in use |
+| **CAPTCHA detected** | Pauses automation, displays banner, waits for user action |
+| **All retries exhausted for keyword** | Marks keyword as **Failed**, moves to next keyword |
 
 ---
 
 ## 🔧 Troubleshooting
 
-### Microsoft Edge tidak terbuka
+### Microsoft Edge doesn't open
 
-- Pastikan Microsoft Edge versi stabil sudah terinstal
-- Pastikan tidak ada sesi automation lain yang menggunakan profil yang sama
-- Coba tutup semua jendela Edge yang terbuka lalu jalankan ulang
-- Periksa **Activity Log** untuk pesan error detail
+- Verify that a stable version of Microsoft Edge is installed.
+- Ensure no other automation processes are using the same profile concurrently.
+- Try closing all existing Microsoft Edge windows and launch again.
+- Check the **Activity Log** for detailed error messages.
 
-### Akun tidak tersimpan setelah login
+### Account is not saved after login
 
-- Gunakan tombol **"Login / Kelola Akun Edge"** di menu Akun — jangan buka Edge secara manual
-- Setelah login, tutup Edge menggunakan tombol `×` seperti biasa
-- Pastikan folder `userData` dapat ditulis (tidak read-only)
-- Jangan menghapus folder `edge-automation-profile` secara manual
+- Always use the **"Login / Manage Edge Account"** button in the Account tab — do not open Edge manually.
+- Close Edge using the window `×` close button when finished logging in.
+- Verify that the `userData` folder is writable (not read-only).
+- Do not manually delete the `edge-automation-profile` folder.
 
-### File TXT tidak terbaca
+### TXT file fails to load
 
-- Pastikan file tersimpan dengan encoding **UTF-8**
-- Gunakan ekstensi `.txt`
-- Pastikan file tidak kosong dan berisi minimal satu baris keyword
-- Pastikan setiap keyword berada di baris terpisah
+- Check that the file is saved with **UTF-8** encoding.
+- Ensure the file has a `.txt` extension.
+- Verify the file is not empty and has at least one line of keywords.
+- Ensure each keyword is on a new line.
 
-### Kotak pencarian Bing tidak ditemukan
+### Bing search box not found
 
-Tampilan Bing mungkin berubah secara berkala. Aplikasi menggunakan beberapa selector fallback. Jika masalah ini terjadi terus-menerus, keyword akan ditandai **Gagal** dan automation melanjutkan ke keyword berikutnya. Periksa Activity Log untuk detail selector yang dicoba.
+Bing's interface updates occasionally. The application uses multiple fallback selectors. If this issue persists, the keyword will be marked **Failed**, and the bot will move to the next keyword. Check the Activity Log to see which selectors were attempted.
 
-### Automation berhenti karena CAPTCHA
+### Automation stopped by CAPTCHA
 
-1. Selesaikan CAPTCHA secara manual di jendela Edge yang terbuka
-2. Kembali ke dashboard aplikasi
-3. Klik tombol **"Saya Sudah Menyelesaikan"**
-4. Automation akan dilanjutkan secara otomatis
+1. Solve the CAPTCHA manually in the active Edge browser window.
+2. Return to the application dashboard.
+3. Click **"I have resolved it"**.
+4. Automation will automatically resume.
 
-### Build EXE gagal
+### Build EXE fails
 
 **PowerShell:**
 
 ```powershell
-# Hapus cache dan install ulang
+# Delete cache and reinstall
 Remove-Item -Recurse -Force node_modules
 Remove-Item -Recurse -Force out
 npm install
@@ -750,148 +751,148 @@ npm run build
 npm run dist
 ```
 
-Pastikan file `resources/icon.ico` tersedia sebelum menjalankan `npm run dist`.
+Verify that `resources/icon.ico` is present before running `npm run dist`.
 
 ---
 
 ## 📊 Activity Log
 
-Log aktivitas mencatat setiap langkah automation secara real-time dengan format terstruktur:
+The activity log logs every step of the automation run in a structured, real-time format:
 
 ```text
-[10:30:01] [INFO]    File pencarian.txt berhasil dimuat — 20 keyword ditemukan
-[10:30:02] [INFO]    Memulai automation dari keyword ke-1
-[10:30:05] [SUCCESS] Microsoft Edge berhasil dibuka
-[10:30:07] [INFO]    Mencari: kucing lucu (1/20)
-[10:30:11] [SUCCESS] Berhasil: kucing lucu — 4.2s
-[10:30:16] [INFO]    Mencari: anjing peliharaan (2/20)
-[10:30:20] [SUCCESS] Berhasil: anjing peliharaan — 4.1s
-[10:30:22] [WARNING] Kotak pencarian tidak ditemukan, mencoba selector fallback...
-[10:30:23] [INFO]    Selector fallback berhasil ditemukan
-[10:30:35] [ERROR]   Timeout — halaman tidak termuat dalam 30 detik
+[10:30:01] [INFO]    File pencarian.txt loaded successfully — 20 keywords found
+[10:30:02] [INFO]    Starting automation from keyword 1
+[10:30:05] [SUCCESS] Microsoft Edge successfully opened
+[10:30:07] [INFO]    Searching: cute cats (1/20)
+[10:30:11] [SUCCESS] Success: cute cats — 4.2s
+[10:30:16] [INFO]    Searching: pet dogs (2/20)
+[10:30:20] [SUCCESS] Success: pet dogs — 4.1s
+[10:30:22] [WARNING] Search box not found, trying fallback selector...
+[10:30:23] [INFO]    Fallback selector successfully resolved
+[10:30:35] [ERROR]   Timeout — page did not load in 30 seconds
 ```
 
-### Data yang TIDAK Pernah Masuk Log
+### Data NEVER Logged
 
-- Password atau credential apapun
-- Cookie browser atau session token
-- Access token atau refresh token
-- Data sesi sensitif lainnya
+- Passwords or credentials of any kind.
+- Browser cookies or session tokens.
+- Access tokens or refresh tokens.
+- Any other sensitive session data.
 
 ---
 
 ## 🗺️ Roadmap
 
-### Fitur yang Direncanakan
+### Planned Enhancements
 
-- [ ] Import keyword dari CSV dan Excel
-- [ ] Dukungan beberapa profil akun
-- [ ] Penjadwalan automation (jam tertentu)
-- [ ] Dashboard statistik historis per sesi
-- [ ] Export hasil pencarian ke CSV
-- [ ] Dukungan beberapa search engine
-- [ ] Auto update aplikasi
-- [ ] Mode system tray (berjalan di background)
-- [ ] Notifikasi desktop (Windows Toast)
-- [ ] Localization Bahasa Indonesia dan Inggris
-- [ ] Unit test dan integration test yang lebih lengkap
-- [ ] Dark mode yang lebih dapat dikustomisasi
+- [ ] Import keywords from CSV and Excel.
+- [ ] Support for multiple account profiles.
+- [ ] Scheduled automation (specific hours/days).
+- [ ] Historical session statistics dashboard.
+- [ ] Export search results to CSV.
+- [ ] Support for multiple search engines.
+- [ ] Auto-update mechanism.
+- [ ] System tray mode (run in background).
+- [ ] Desktop notifications (Windows Toast).
+- [ ] Localization for English and Indonesian.
+- [ ] Expanded unit and integration test coverage.
+- [ ] Fully customizable Dark mode.
 
 ---
 
 ## ❓ FAQ
 
-### Apakah aplikasi menyimpan password akun Microsoft?
+### Does the application store my Microsoft account password?
 
-Tidak. Aplikasi tidak pernah meminta atau menyimpan password. Login dilakukan langsung di jendela Microsoft Edge, dan aplikasi hanya menggunakan persistent browser profile untuk mempertahankan sesi yang sudah ada.
+No. The application never asks for or stores passwords. Login occurs directly in Microsoft Edge, and the app uses a persistent browser profile to maintain the session.
 
-### Apakah saya harus login setiap kali menjalankan automation?
+### Do I have to log in every time I run automation?
 
-Tidak. Selama sesi masih valid dan profil automation tidak direset atau dihapus, Anda hanya perlu login satu kali.
+No. As long as your session is valid and the automation profile is not reset or deleted, you only need to log in once.
 
-### Apakah Edge utama saya harus ditutup saat automation berjalan?
+### Does my main Edge browser have to be closed while running automation?
 
-Profil Edge utama Anda tidak digunakan — aplikasi menggunakan profil automation yang terpisah. Namun, pastikan tidak ada dua proses automation yang menggunakan profil yang sama secara bersamaan.
+No. Your main Edge profile is not used — the app uses a separate dedicated automation profile. However, make sure no other automation processes are using the profile at the same time.
 
-### Apakah keyword dapat mengandung spasi?
+### Can keywords contain spaces?
 
-Ya. Keyword seperti `otomatisasi bisnis dengan AI` sepenuhnya didukung dan akan diketik apa adanya.
+Yes. Keywords like `business automation with AI` are fully supported and will be typed as-is.
 
-### Apakah aplikasi dapat dijalankan tanpa koneksi internet?
+### Can the app run without an internet connection?
 
-Dashboard dapat dibuka dan digunakan untuk manajemen keyword. Namun, automation pencarian membutuhkan koneksi internet aktif untuk mengakses halaman Bing.
+The dashboard can be opened and used for keyword management. However, search automation requires an active internet connection to access Bing.
 
-### Apakah aplikasi melewati CAPTCHA secara otomatis?
+### Does the app bypass CAPTCHAs automatically?
 
-Tidak. Ketika CAPTCHA terdeteksi, automation dijeda dan pengguna harus menyelesaikannya secara manual. Aplikasi akan menunggu konfirmasi sebelum melanjutkan.
+No. When a CAPTCHA is detected, automation is paused, and the user must solve it manually. The app will wait for confirmation before resuming.
 
-### Apakah aplikasi mendukung macOS atau Linux?
+### Does the app support macOS or Linux?
 
-Saat ini tidak. Konfigurasi build dan packaging hanya dikonfigurasi untuk **Windows x64**. Dukungan platform lain belum tersedia.
+Currently, no. Build configurations and packaging are only setup for **Windows x64**. Support for other platforms is not available.
 
-### Di mana data profil akun disimpan?
+### Where is the account profile data stored?
 
-Di folder `userData` Electron, biasanya di:
+In Electron's `userData` folder, typically at:
 
 ```
 %APPDATA%\edge-search-bot\edge-automation-profile\
 ```
 
-Folder ini **tidak boleh dicommit** ke repository dan sudah terdaftar di `.gitignore`.
+This directory **must not be committed** to git and is included in `.gitignore`.
 
 ---
 
-## 🤝 Kontribusi
+## 🤝 Contribution
 
-Kontribusi sangat diterima. Berikut alur pengembangan yang disarankan:
+Contributions are welcome! Here is the suggested workflow:
 
-### Langkah Kontribusi
+### Contribution Steps
 
-1. **Fork** repository ini
-2. **Buat branch** untuk fitur atau perbaikan Anda:
+1. **Fork** this repository.
+2. **Create a branch** for your feature or bug fix:
    ```bash
-   git checkout -b feature/nama-fitur
-   # atau
-   git checkout -b fix/nama-bug
+   git checkout -b feature/your-feature-name
+   # or
+   git checkout -b fix/your-bug-name
    ```
-3. **Tulis kode** dan pastikan semua pemeriksaan lulus:
+3. **Write code** and ensure all checks pass:
    ```bash
    npm run typecheck
    npm run lint
    ```
-4. **Commit** perubahan dengan pesan yang deskriptif:
+4. **Commit** changes with descriptive messages:
    ```bash
-   git commit -m "feat: menambahkan fitur penjadwalan automation"
-   git commit -m "fix: memperbaiki deteksi kotak pencarian saat halaman lambat"
+   git commit -m "feat: add scheduling feature"
+   git commit -m "fix: resolve search box detection delay"
    ```
-5. **Push** branch ke repository fork:
+5. **Push** your branch to your forked repository:
    ```bash
-   git push origin feature/nama-fitur
+   git push origin feature/your-feature-name
    ```
-6. **Buat Pull Request** dengan deskripsi yang jelas
+6. **Create a Pull Request** with a clear description.
 
-### Panduan Koding
+### Coding Guidelines
 
-- Gunakan TypeScript strict — tidak ada `any` yang tidak perlu
-- Jalankan `npm run typecheck` dan `npm run lint` sebelum commit
-- Tambahkan komentar pada logika yang kompleks
-- Pastikan state machine tetap konsisten saat menambahkan fitur baru
+- Use strict TypeScript — no unnecessary `any` types.
+- Run `npm run typecheck` and `npm run lint` before committing.
+- Document complex logic.
+- Keep the state machine consistent when adding new status flows.
 
-### Yang Tidak Boleh Dicommit
+### DO NOT COMMIT
 
 ```
-❌ Folder edge-automation-profile/ atau user-data/
-❌ File credential, token, atau .env berisi data sensitif
-❌ File build besar (dist/, out/, release/)
+❌ Folder edge-automation-profile/ or user-data/
+❌ Credentials, tokens, or .env files with sensitive data
+❌ Large build files (dist/, out/, release/)
 ❌ node_modules/
-❌ File log (*.log)
+❌ Log files (*.log)
 ```
 
 ---
 
-## 📋 Git Ignore Penting
+## 📋 Important Git Ignore
 
-Pastikan file `.gitignore` Anda mencakup entri berikut:
+Ensure your `.gitignore` file contains the following entries:
 
 ```gitignore
 # Dependencies
@@ -903,7 +904,7 @@ dist-electron/
 out/
 release/
 
-# Browser automation profile — JANGAN commit
+# Browser automation profile — DO NOT commit
 edge-automation-profile/
 edge-profile/
 
@@ -931,27 +932,27 @@ thumbs.db
 
 ## ⚠️ Disclaimer
 
-Project ini dibuat untuk membantu automation pencarian dalam penggunaan yang **sah, wajar, dan bertanggung jawab**. Pengguna bertanggung jawab penuh untuk memastikan penggunaannya mematuhi:
+This project is created to assist with search automation for **lawful, reasonable, and responsible use cases**. The user is solely responsible for ensuring usage complies with:
 
-- Ketentuan Layanan Microsoft Edge
-- Ketentuan Layanan Bing / Microsoft Bing Search
-- Kebijakan akun Microsoft yang berlaku
-- Hukum dan regulasi yang berlaku di wilayah pengguna
+- Microsoft Edge Terms of Service
+- Bing / Microsoft Bing Search Terms of Service
+- Applicable Microsoft account policies
+- Local laws and regulations
 
-Aplikasi ini **tidak** menyediakan mekanisme untuk melewati CAPTCHA, rate limit, sistem autentikasi, atau mekanisme keamanan layanan manapun. Setiap penggunaan yang melanggar ketentuan layanan pihak ketiga menjadi tanggung jawab pengguna sepenuhnya.
+This application **does not** provide mechanisms to bypass CAPTCHAs, rate limits, authentication systems, or any security measures. Any usage violating third-party terms of service is at the user's own risk.
 
 ---
 
-## 📜 Lisensi
+## 📜 License
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE). Silakan baca file LICENSE untuk informasi lebih lanjut mengenai hak penggunaan dan distribusi.
+This project is licensed under the [MIT License](LICENSE). Please see the LICENSE file for more information regarding usage rights and distribution.
 
 ---
 
 <div align="center">
 
-Dibangun dengan ❤️ menggunakan **Electron**, **React**, **TypeScript**, dan **Playwright**
+Built with ❤️ using **Electron**, **React**, **TypeScript**, and **Playwright**
 
-⭐ Jika project ini membantu, pertimbangkan untuk memberikan bintang pada repository
+⭐ If this project helped you, please consider starring the repository
 
 </div>
