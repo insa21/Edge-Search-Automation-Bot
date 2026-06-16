@@ -1,0 +1,41 @@
+appId: com.edgesearchbot.app
+productName: Edge Search Automation Bot
+executableName: EdgeSearchBot
+
+directories:
+  output: dist
+  buildResources: resources
+
+# electron-vite outputs to: out/main, out/preload, out/renderer
+files:
+  - out/**
+  - sample/**
+  - "!**/{.DS_Store,.git,.gitignore,.env}"
+  - "!**/node_modules/.cache"
+
+win:
+  icon: resources/icon.ico
+  target:
+    - target: nsis
+      arch:
+        - x64
+    - target: portable
+      arch:
+        - x64
+  requestedExecutionLevel: asInvoker
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+  installerIcon: resources/icon.ico
+  uninstallerIcon: resources/icon.ico
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Edge Search Bot
+
+portable:
+  artifactName: "${productName} ${version} Portable.exe"
+
+publish: null
