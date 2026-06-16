@@ -1,0 +1,29 @@
+node_modules/
+dist/
+dist-electron/
+out/
+release/
+*.log
+.DS_Store
+thumbs.db
+
+# Browser automation profile — JANGAN dicommit
+edge-automation-profile/
+edge-profile/
+user-data/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Testing
+coverage/
+playwright-report/
+test-results/
+
+# Build cache
+.vite/
+
+# Antigravity artifacts
+artifacts-link/
